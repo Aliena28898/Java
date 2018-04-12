@@ -4,6 +4,7 @@ import org.foobarspam.furnaceDIP.hardware.GasHeater;
 import org.foobarspam.furnaceDIP.hardware.Regulator;
 import org.foobarspam.furnaceDIP.hardware.RemoteCommandSensor;
 import org.foobarspam.furnaceDIP.interfaces.Heater;
+import org.foobarspam.furnaceDIP.interfaces.Regulable;
 import org.foobarspam.furnaceDIP.interfaces.Thermometer;
 import org.foobarspam.furnaceDIP.otherstuff.Jedi;
 import org.foobarspam.furnaceDIP.types.RoomTemperature;
@@ -23,7 +24,7 @@ public class App
         Heater heater = new GasHeater();
         Thermometer thermometer = new RemoteCommandSensor();
         
-        Regulator regulator = new Regulator();
+        Regulable regulator = new Regulator();
         
         System.out.println( "Arrancando..." );
         regulator.regulate(thermometer, heater, minTemp, maxTemp, temperature);
