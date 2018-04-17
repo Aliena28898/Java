@@ -20,7 +20,7 @@ public class App
     	final double minTemp = 15.0;
         final double maxTemp = 21.0;
         
-        RoomTemperature temperature = new RoomTemperature(15);
+        RoomTemperature temperature = RoomTemperature.getSingletonInstance(15);
         Heater heater = new GasHeater();
         Thermometer thermometer = new RemoteCommandSensor();
         
@@ -29,6 +29,8 @@ public class App
         System.out.println( "Arrancando..." );
         regulator.regulate(thermometer, heater, minTemp, maxTemp, temperature);
         
+        
+        RoomTemperature temperatureDos = RoomTemperature.getSingletonInstance(20);
         Jedi yoda = new Jedi();
         System.out.println( "\nArrancando a Yoda: " );
         regulator.regulate(thermometer, yoda, minTemp, maxTemp, temperature);

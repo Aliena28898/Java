@@ -3,11 +3,23 @@ package org.foobarspam.furnaceDIP.types;
 public class RoomTemperature {
 	
 	private double temperature = 0;
+        private static RoomTemperature roomTemperature;
 	
-	public RoomTemperature(double temperature){
+	private RoomTemperature(double temperature){
 		this.temperature = temperature;
 	}
 
+        public static RoomTemperature getSingletonInstance(double temperature){
+            if(roomTemperature == null){
+                roomTemperature = new RoomTemperature(temperature);
+                return roomTemperature;
+            }
+            else{
+                roomTemperature.setTemperature(temperature);
+                return roomTemperature;
+            }
+        }
+        
 	public double getTemperature() {
 		return this.temperature;
 	}
